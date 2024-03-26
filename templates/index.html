@@ -4,30 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sentiment Analysis</title>
+    <link rel="stylesheet" href="/static/styles.css">
+    <link rel="stylesheet" href="">
+
 </head>
 <body>
-    <h1>Sentiment Analysis</h1>
-    <form action="/" method="post">
-        <label for="text">Enter Chinese Text:</label><br>
-        <textarea id="text" name="text" rows="4" cols="50"></textarea><br>
-        <input type="submit" value="Submit">
-    </form>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h1 class="text-center mb-4">Sentiment Analysis for the Chinese Language</h1>
+                <form action="/" method="post">
+                    <div class="mb-3">
+                        <label for="text" class="form-label">Enter Chinese Text:</label>
+                        <textarea class="form-control" id="text" name="text" rows="14" cols="50"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
 
-    {% if text %}
-    <h2>Analysis Results:</h2>
-    <p><strong>Keywords:</strong> {{ keywords }}</p>
-    <p><strong>Summary:</strong></p>
-    <ul>
-        {% for sentence in summary %}
-            <li>{{ sentence }}</li>
-        {% endfor %}
-    </ul>
-    <p><strong>Sentences:</strong></p>
-    <ul>
-        {% for i in range(sentences | length) %}
-            <li>{{ sentences[i] }} - Sentiment: {{ sentiments[i] }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
+                {% if text %}
+                <div class="mt-5">
+                    <h2>Analysis Results:</h2>
+                    <p><strong>Keywords:</strong> {{ keywords }}</p>
+                    <p><strong>Summary:</strong></p>
+                    <ul>
+                        {% for sentence in summary %}
+                            <li>{{ sentence }}</li>
+                        {% endfor %}
+                    </ul>
+                    <p><strong>Sentences:</strong></p>
+                    <ul>
+                        {% for i in range(sentences | length) %}
+                            <li>{{ sentences[i] }} - Sentiment: {{ sentiments[i] }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>
